@@ -33,7 +33,7 @@ using namespace cv;
     imageView = iv;
     
     videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView]; // Init with the UIImageView from the ViewController
-    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack; // Use the back camera
+    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront; // Use the back camera
     videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait; // Ensure proper orientation
     videoCamera.rotateVideo = YES; // Ensure proper orientation
     videoCamera.defaultFPS = 30; // How often 'processImage' is called, adjust based on the amount/complexity of images
