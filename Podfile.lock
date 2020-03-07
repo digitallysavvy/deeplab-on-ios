@@ -1,0 +1,20 @@
+PODS:
+  - OpenCV2 (3.4.9)
+  - TensorFlowLite (1.13.1)
+
+DEPENDENCIES:
+  - OpenCV2 (~> 3.4.0)
+  - TensorFlowLite (~> 1.13.1)
+
+SPEC REPOS:
+  trunk:
+    - OpenCV2
+    - TensorFlowLite
+
+SPEC CHECKSUMS:
+  OpenCV2: edd62960f41b4d4a1155905f8e3327a5eb62cac3
+  TensorFlowLite: 8b9dc4eb32eac0f8cb660c66bca7604da56dcc5a
+
+PODFILE CHECKSUM: d3314ac1f823311440571380499901a2b9103c30
+
+COCOAPODS: 1.8.4
