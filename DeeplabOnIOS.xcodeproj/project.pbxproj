@@ -18,6 +18,7 @@
 		653E204F1FEEBD5C00274F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653E204D1FEEBD5C00274F0E /* LaunchScreen.storyboard */; };
 		65FB8E4A1FEF343900967D6E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FB8E491FEF343900967D6E /* CoreMedia.framework */; };
 		65FB8E4C1FEF343E00967D6E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FB8E4B1FEF343E00967D6E /* AVFoundation.framework */; };
+		A1914B29241A75D8009EE657 /* ARVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1914B28241A75D8009EE657 /* ARVideoSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		65FB8E4B1FEF343E00967D6E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82EC4C9961492002F4DB2EB1 /* Pods-DeeplabOnIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplabOnIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplabOnIOS/Pods-DeeplabOnIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		830CBBB78878C9AE97731E52 /* Pods-DeeplabOnIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplabOnIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplabOnIOS/Pods-DeeplabOnIOS.release.xcconfig"; sourceTree = "<group>"; };
+		A1914B28241A75D8009EE657 /* ARVideoSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARVideoSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				653E204D1FEEBD5C00274F0E /* LaunchScreen.storyboard */,
 				653E20481FEEBD5C00274F0E /* Main.storyboard */,
 				653E20461FEEBD5C00274F0E /* ViewController.swift */,
+				A1914B28241A75D8009EE657 /* ARVideoSource.swift */,
 				3DD76BC922901D1A00533E0E /* Model */,
 			);
 			path = DeeplabOnIOS;
@@ -219,6 +222,7 @@
 				3DD76BC5228F9EAF00533E0E /* TfliteWrapper.mm in Sources */,
 				3D98A4812293E7D300842B2F /* NostalgiaCamera.mm in Sources */,
 				653E20471FEEBD5C00274F0E /* ViewController.swift in Sources */,
+				A1914B29241A75D8009EE657 /* ARVideoSource.swift in Sources */,
 				653E20451FEEBD5C00274F0E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

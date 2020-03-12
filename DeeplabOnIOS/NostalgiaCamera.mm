@@ -10,6 +10,7 @@
 #import <opencv2/imgcodecs/ios.h>
 #include "NostalgiaCamera.h"
 #include "TfliteWrapper.h"
+#import "DeeplabOnIOS-Swift.h"
 
 using namespace std;
 using namespace cv;
@@ -25,6 +26,7 @@ using namespace cv;
     UIImageView * imageView;
     CvVideoCamera * videoCamera;
     TfliteWrapper  *tfLiteWrapper;
+    ARVideoSouce *videoSource;
 }
 
 - (id)initWithController:(UIViewController<NostalgiaCameraDelegate>*)c andImageView:(UIImageView*)iv
@@ -36,7 +38,7 @@ using namespace cv;
     videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront; // Use the back camera
     videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait; // Ensure proper orientation
     videoCamera.rotateVideo = YES; // Ensure proper orientation
-    videoCamera.defaultFPS = 30; // How often 'processImage' is called, adjust based on the amount/complexity of images
+    videoCamera.defaultFPS = 60; // How often 'processImage' is called, adjust based on the amount/complexity of images
     videoCamera.delegate = self;
     
     tfLiteWrapper = [[TfliteWrapper alloc]init];
@@ -138,6 +140,11 @@ using namespace cv;
 - (void)stop
 {
     [videoCamera stop];
+}
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    [videoCamera captureOutput:output didOutputSampleBuffer:sampleBuffer fromConnection:connection];
+    // add in Agora support
 }
 
 @end

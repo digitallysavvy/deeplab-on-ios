@@ -1,20 +1,24 @@
 PODS:
+  - AgoraRtcEngine_iOS (2.9.1)
   - OpenCV2 (3.4.9)
   - TensorFlowLite (1.13.1)
 
 DEPENDENCIES:
+  - AgoraRtcEngine_iOS
   - OpenCV2 (~> 3.4.0)
   - TensorFlowLite (~> 1.13.1)
 
 SPEC REPOS:
   trunk:
+    - AgoraRtcEngine_iOS
     - OpenCV2
     - TensorFlowLite
 
 SPEC CHECKSUMS:
+  AgoraRtcEngine_iOS: b2eedd8f9ab47b71163f3285e836bd23feb43fff
   OpenCV2: edd62960f41b4d4a1155905f8e3327a5eb62cac3
   TensorFlowLite: 8b9dc4eb32eac0f8cb660c66bca7604da56dcc5a
 
-PODFILE CHECKSUM: d3314ac1f823311440571380499901a2b9103c30
+PODFILE CHECKSUM: d99d25686846738a18d6479336a2e0a8b4b716c9
 
 COCOAPODS: 1.8.4

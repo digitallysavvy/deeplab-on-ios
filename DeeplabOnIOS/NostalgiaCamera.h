@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "DeeplabOnIOS-Swift.h"
+
+@class ARVideoSource;
 
 // Protocol for callback action
 @protocol NostalgiaCameraDelegate <NSObject>
@@ -21,5 +24,8 @@
 -(id) initWithController: (UIViewController<NostalgiaCameraDelegate>*)c andImageView: (UIImageView*)iv;
 -(void)start;
 -(void)stop;
+-(void)setVideoSource;
+-(ARVideoSource *)returnSwiftClassInstance;
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
 
 @end

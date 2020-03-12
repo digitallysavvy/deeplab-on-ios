@@ -8,4 +8,5 @@ target 'DeeplabOnIOS' do
   # Pods for DeeplabOnIOS 
   pod 'TensorFlowLite', '~> 1.13.1'
   pod 'OpenCV2', '~> 3.4.0'
+  pod 'AgoraRtcEngine_iOS'
 end
