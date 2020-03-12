@@ -29,7 +29,7 @@ class ViewController: UIViewController, NostalgiaCameraDelegate {
     // Initialize Camera when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        camera = NostalgiaCamera(controller: self, andImageView: imgView)
+        camera = NostalgiaCamera(controller: self, andImageView: imgView, andSource: arVideoSource)
         
         // Agora setup
         let agoraAppID = ""
@@ -41,7 +41,7 @@ class ViewController: UIViewController, NostalgiaCameraDelegate {
         let videoConfig = AgoraVideoEncoderConfiguration(size: videoDimension, frameRate: frameRate, bitrate: videoBitRate, orientationMode: videoOutputOrientationMode)
         agoraKit.setVideoEncoderConfiguration(videoConfig) // - set video encoding configuration (dimensions, frame-rate, bitrate, orientation
         agoraKit.enableVideo() // - enable video
-        agoraKit.setVideoSource(self.arVideoSource) // - set the video source to the custom AR source
+
         agoraKit.enableExternalAudioSource(withSampleRate: audioSampleRate, channelsPerFrame: audioChannelsPerFrame) // - enable external audio souce (since video and audio are coming from seperate sources)
         agoraKit.enableWebSdkInteroperability(true)
         self.agoraKit = agoraKit // set a reference to the Agora engine
@@ -70,3 +70,6 @@ class ViewController: UIViewController, NostalgiaCameraDelegate {
 
 }
 
+extension ViewController: AgoraRtcEngineDelegate {
+    
+}

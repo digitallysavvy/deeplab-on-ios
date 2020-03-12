@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "DeeplabOnIOS-Swift.h"
 
 @class ARVideoSource;
 
@@ -21,11 +20,8 @@
 // Public interface for camera. ViewController only needs to init, start and stop.
 @interface NostalgiaCamera : NSObject
 
--(id) initWithController: (UIViewController<NostalgiaCameraDelegate>*)c andImageView: (UIImageView*)iv;
+-(id) initWithController: (UIViewController<NostalgiaCameraDelegate>*)c andImageView: (UIImageView*)iv andSource: (ARVideoSource*)source;
 -(void)start;
 -(void)stop;
--(void)setVideoSource;
--(ARVideoSource *)returnSwiftClassInstance;
-- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
 
 @end

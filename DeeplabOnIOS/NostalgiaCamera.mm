@@ -9,14 +9,14 @@
 #import <opencv2/videoio/cap_ios.h>
 #import <opencv2/imgcodecs/ios.h>
 #include "NostalgiaCamera.h"
+#include "VideoCamera.hpp"
 #include "TfliteWrapper.h"
-#import "DeeplabOnIOS-Swift.h"
+#include "ARVideoSource.h"
 
 using namespace std;
 using namespace cv;
 
-
-@interface NostalgiaCamera () <CvVideoCameraDelegate>
+@interface NostalgiaCamera () <CvVideoCameraDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 @end
 
 
@@ -24,22 +24,23 @@ using namespace cv;
 {
     UIViewController<NostalgiaCameraDelegate> * delegate;
     UIImageView * imageView;
-    CvVideoCamera * videoCamera;
+    VideoCamera * videoCamera;
     TfliteWrapper  *tfLiteWrapper;
-    ARVideoSouce *videoSource;
+    ARVideoSource *videoSource;
 }
 
-- (id)initWithController:(UIViewController<NostalgiaCameraDelegate>*)c andImageView:(UIImageView*)iv
+- (id)initWithController:(UIViewController<NostalgiaCameraDelegate>*)c andImageView:(UIImageView*)iv andSource: (ARVideoSource*)source
 {
     delegate = c;
     imageView = iv;
-    
-    videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView]; // Init with the UIImageView from the ViewController
+    videoSource = source;
+    videoCamera = [[VideoCamera alloc] initWithParentView:imageView]; // Init with the UIImageView from the ViewController
     videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront; // Use the back camera
     videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait; // Ensure proper orientation
     videoCamera.rotateVideo = YES; // Ensure proper orientation
     videoCamera.defaultFPS = 60; // How often 'processImage' is called, adjust based on the amount/complexity of images
     videoCamera.delegate = self;
+    videoCamera.outputDelegate = self;
     
     tfLiteWrapper = [[TfliteWrapper alloc]init];
     tfLiteWrapper = [tfLiteWrapper initWithModelFileName:@"deeplabv3_257_mv_gpu"];
@@ -141,10 +142,12 @@ using namespace cv;
 {
     [videoCamera stop];
 }
-- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
-{
-    [videoCamera captureOutput:output didOutputSampleBuffer:sampleBuffer fromConnection:connection];
-    // add in Agora support
+
+- (void) captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CMTime timestamp = CMSampleBufferGetDecodeTimeStamp(sampleBuffer);
+    //NSLog(@"Fetched pixel buffer %@", pixelBuffer);
+    [videoSource sendBuffer:pixelBuffer timestamp:timestamp];
 }
 
 @end
