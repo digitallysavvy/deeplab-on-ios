@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class ARVideoSource;
+
 // Protocol for callback action
 @protocol NostalgiaCameraDelegate <NSObject>
 
@@ -18,7 +20,7 @@
 // Public interface for camera. ViewController only needs to init, start and stop.
 @interface NostalgiaCamera : NSObject
 
--(id) initWithController: (UIViewController<NostalgiaCameraDelegate>*)c andImageView: (UIImageView*)iv;
+-(id) initWithController: (UIViewController<NostalgiaCameraDelegate>*)c andImageView: (UIImageView*)iv andSource: (ARVideoSource*)source;
 -(void)start;
 -(void)stop;
 
